@@ -14,17 +14,15 @@ $usuarioDTO->setDatanascimento($dtnasc);
 $usuarioDAO = new UsuarioDAO;
 $usuario = $usuarioDAO->encontrarUsuario($usuarioDTO);
 
-print_r($usuario);
-exit;
-    if($usuario->rowCount() == 1){
+    if(!empty($usuario)){
         $usuarioDTO->setEmail($email);
         $usuarioDTO->setSenha($senha);
         if($usuarioDAO->alterarSenha($usuarioDTO)){
             $msg = true;
-            header("Location: ../view/formCadastrarCliente.php?msg={$erros[1]}");
+            header("Location: ../view/formCadastrarUsuario.php?msg={$erros[1]}");
         }
     }else{
         $msg = true;
-        header("Location: ../view/formCadastrarCliente.php?msg={$erros[2]}");
+        header("Location: ../view/formCadastrarUsuario.php?msg={$erros[2]}");
     }
 ?>

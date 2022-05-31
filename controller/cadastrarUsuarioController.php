@@ -20,6 +20,11 @@ $usuarioDTO->setTipo($tipo);
 $usuarioDTO->setSenha($senha);
 
 $usuarioDAO = new UsuarioDAO();
+
+    if(!empty($usuarioDAO->findByEmail($usuarioDTO))){
+        header("Location: ../view/formCadastrarUsuario.php?msg={$erros[5]}");
+    }
+
     if ($usuarioDAO->salvar($usuarioDTO)){
         $msg = true;
         header("Location: ../view/formCadastrarUsuario.php?msg={$erros[3]}");

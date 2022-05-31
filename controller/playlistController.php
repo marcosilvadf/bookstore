@@ -16,10 +16,4 @@ $playlistDAO = new PlaylistDAO();
     //header( "Location: ../view/formCadastrarCliente.php?msg={$error[2]}" );
 }
 
-/* select p.titulo, u.nome
-from cliente_livro as a
-inner join playlist as p
-on a.playlist_id = p.id
-inner join usuario as u
-on a.USUARIO_id = u.id
-where u.id = 12; */
+/* ; */

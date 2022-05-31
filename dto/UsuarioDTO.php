@@ -10,6 +10,8 @@ class UsuarioDTO{
     private $senha;
     private $datacadastro;
     private $situacao;
+    private $campo;
+    private $campoValor;
 
     
     public function getId(){
@@ -90,6 +92,24 @@ class UsuarioDTO{
 
     public function setSituacao($situacao){
         $this->situacao = $situacao;
+
+    }
+
+    public function getCampo(){
+        return $this->campo;
+    }
+
+    public function setCampo($campo){
+        $this->campo = $campo;
+
+    }
+
+    public function getCampoValor(){
+        return $this->campoValor;
+    }
+
+    public function setCampoValor($campoValor){
+        $this->campoValor = $campoValor;
 
     }
 }

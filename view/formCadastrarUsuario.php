@@ -110,7 +110,7 @@ if(isset($_SESSION['perfil'])){
                             <input type="password" name="senha" class="sen equalPass" onchange="equalPass($y = 4)" placeholder="Confirmar nova senha" maxlength="10" required>                    
                             <span onclick="pass($n = 4)" class="toggle_om">Mostrar senha</i></span>
                         </div>
-                        <input type="submit" value="Entrar" onclick="return $naoClick[4]" required>
+                        <input type="submit" value="salvar" onclick="return $naoClick[4]" required>
                         <a href="#" class="esqueceu" onclick="clickEsqSenhaOff()">Entrar</a>
                     </form>
                     <?php

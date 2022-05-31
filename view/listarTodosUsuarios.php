@@ -5,12 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar clientes</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
     <script src="../lib/fontawesome/js/all.min.js"></script>
     <script src="../js/alerts.js" defer></script>
 </head>
 <body>
+    <form action="../controller/PesquisarUsuarioController.php" method="post">
+        <input type="text" name="valor" id="">
+        <select name="campo" id="">
+            <option value="nome">nome</option>
+            <option value="email">e-mail</option>
+        </select>
+        <input type="submit" value="Pesquisar">
+    </form>
+
     <table>
         <tr>
         <th>Nome</th>

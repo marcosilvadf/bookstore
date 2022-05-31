@@ -36,8 +36,9 @@ class PlaylistDAO{
 
     public function findByIdUser($idUser){
         try {
-            $sql = "SELECT * FROM playlist  WHERE idUser = $idUser";
+            $sql = "SELECT p.titulo, u.nome FROM cliente_livro AS a INNER JOIN playlist AS p ON a.playlist_id = p.id INNER JOIN usuario AS u ON a.USUARIO_id = u.id WHERE u.id = ?";
             $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1, $idUser);
             $stmt->execute();
             $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $usuarios;

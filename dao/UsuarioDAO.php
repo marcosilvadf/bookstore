@@ -67,14 +67,15 @@ class UsuarioDAO{
         }
     }
 
-    public function encontrarUsuario(UsuarioDTO $usuarioDTO){
+    public function encontrarUsuario(UsuarioDTO $usuarioDTO){        
         try {
-            $sql = "SELECT * FROM usuario WHERE email = :email AND nascimento = :nasc";
+            $sql = "SELECT * FROM usuario WHERE email = :email AND data_nascimento = :nasc";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(":email", $usuarioDTO->getEmail());
             $stmt->bindValue(":nasc", $usuarioDTO->getDatanascimento());            
             $stmt->execute();
-            return $stmt;
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $usuario;
         } catch (PDOException $e) {
             
         }
@@ -145,6 +146,32 @@ class UsuarioDAO{
             return $stmt->execute();
         } catch (PDOException $e) {
             echo "erro: ", $e->getMessage();
+        }
+    }
+
+    public function findByEmail(UsuarioDTO $usuarioDTO){
+        try {
+            $sql = "SELECT id FROM usuario WHERE email = ?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1, $usuarioDTO->getEmail());
+            $stmt->execute();
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $usuario;
+        } catch (PDOException $e) {
+            
+        }
+    }
+
+    public function Pesquisarusuario(UsuarioDTO $usuarioDTO, $campo){
+        try {
+            $sql = "SELECT * FROM usuario WHERE $campo = ?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1, $usuarioDTO->getCampoValor());
+            $stmt->execute();
+            $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $usuarios;
+        } catch (PDOException $e) {
+            
         }
     }
 }
