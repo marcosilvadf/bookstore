@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../image/biblioteca.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.5s;
+}
+
+.container{
+     position: relative;
+     width: 800px;
+     height: 500px;
+     margin: 20px;
+}
+
+.azulbg{
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 35px 0px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.azulbg .box{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.azulbg .box h2{
+    color: rgb(0, 0, 0);
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.azulbg .box button{
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: white;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.formBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.25);
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.formBox.active{
+    left: 50%;
+}
+
+.formBox .form{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 50px;
+    transition: 0.5s;
+}
+
+.formBox .cadastroForm{
+    transition-delay: 0.25s;
+}
+
+.formBox.active .cadastroForm{
+    left: -100%;
+    transition-delay: 0s;
+}
+
+
+.formBox .recuperarForm{
+    top: -100%;
+    transition-delay: 0s;
+}
+
+.formBox.hide .recuperarForm{
+    top: 0;
+    transition-delay: 0.25s;
+}
+
+.formBox.hide .cadastroForm{
+    top: 100%;
+    transition: 0.25s;
+}
+
+.formBox .cadastrarForm{
+    left: 100%;
+    transition-delay: 0s;
+}
+
+.formBox.active .cadastrarForm{
+    left: 0;
+    transition-delay: 0.25s;
+}
+
+.formBox .form form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formBox .form form h3{
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.formBox .form form input{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    outline: none;
+    font-size: 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.formBox .form form input[type="submit"]{
+    background-color: red;
+    border: none;
+    color: white;
+    max-width: 100px;
+    cursor: pointer;
+}
+
+
+.formBox .form form .esqueceu{
+    color: #333;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form a{
+    user-select: none;
+}
+
+.principal{
+    box-shadow: 0px 2px 45px rgba(0, 0, 0, 0.25);
+}
+
+.principal .informacao{
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+    background-color: white;
+}
+
+.principal .informacao h2{
+    margin-bottom: 40px;
+}
+
+.principal .informacao p{
+    margin-bottom: 5px;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+.principal .informacao a{
+    text-decoration: none;
+    font-weight: bold;
+    padding: 2px 10px;
+    border-radius: 5px;
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-right: 20px;
+    color: white;
+    background-color: #006eff;
+}
+
+div.pag{
+    width: 98%;
+    height: 600px;
+    display: flex;
+    background-color: white;
+}
+
+.contRadio{
+    display: flex;
+    align-items: stretch;
+}
+
+.rad{
+    margin: 0px 10px;
+}
+
+div.perfil{
+    cursor: pointer;
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 75px;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding-top: 5px;
+    margin: 10px;
+}
+
+.erro{
+    background-color: red;
+    border-radius: 4px;
+    margin-top: 20px;
+    color: white;
+    padding: 2px 5px;
+}
+
+.sucess{
+    background-color: green;
+    border-radius: 4px;
+    margin-top: 20px;
+    color: white;
+    padding: 2px 5px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+th, tr, td{
+    border: 1px solid black;
+    text-align: center;
+}
+
+td{
+    width: 150px;
+}
+
+tr:nth-child(even){
+    background-color: #9595f5;
+}
+
+tr:nth-child(odd){
+    background-color: #adadd8;
+}
+
+tr:nth-child(1){
+    background-color: #5151ff;
+    color: white;
+}
+
+div.btnPass{
+    position: relative;
+    width: 100%;
+}
+
+div.btnPass span{
+    user-select: none;
+    font-size: 10px;
+    cursor: pointer;
+    margin-top: 12.5px;    
+    margin-right: 5px;
+    position: absolute;    
+    top: 0;
+    right: 0;
+}
+
+.center{
+    margin: auto 0px;
+}
+
+.error{
+    color: red;
+}
+
+.acept{
+    color: green;
+}
+
+@media (max-width: 991px){
+    .container{
+        max-width: 400px;
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container .azulbg{
+        top: 0;
+        height: 100%;
+    }
+
+    .formBox{
+        width: 100%;
+        height: 500px;
+        top: 0;
+    }
+
+    .azulbg .box{
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        bottom: 0;
+    }
+
+    .box.jCadastrado{
+        top: 0;
+    }
+
+    .formBox.active{
+        left: 0;
+        top: 150px;
+    }
+}
