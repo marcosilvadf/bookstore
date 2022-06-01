@@ -7,10 +7,7 @@ require_once '../utils/erros.php';
 $campo = $_POST['campo'];
 $valor = $_POST['valor'];
 
-$usuarioDTO = new UsuarioDTO();
-$usuarioDTO->setCampoValor($valor);
-
 $usuarioDAO = new UsuarioDAO();
-$usuarios = $usuarioDAO->Pesquisarusuario($usuarioDTO, $campo);
+$usuarios = $usuarioDAO->Pesquisarusuario($campo, $valor);
 print_r($usuarios);
 exit;

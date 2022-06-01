@@ -10,9 +10,6 @@ class UsuarioDTO{
     private $senha;
     private $datacadastro;
     private $situacao;
-    private $campo;
-    private $campoValor;
-
     
     public function getId(){
         return $this->id;
