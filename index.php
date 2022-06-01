@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <a href="/view/formCadastrarUsuario.php">Entrar</a>
+        <a href="/view/formCadastrarUsuario.php">Logar</a>
     </header>
 
     <main>        
