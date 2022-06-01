@@ -162,15 +162,16 @@ class UsuarioDAO{
         }
     }
 
-    public function Pesquisarusuario($campo, $valor){
+    public function Pesquisarusuario(UsuarioDTO $usuarioDTO, $campo){
         try {
-            $sql = "SELECT * FROM usuario WHERE $campo = $valor";
+            $sql = "SELECT * FROM usuario WHERE $campo like ?";
             $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1, $usuarioDTO->getCampoValor());
             $stmt->execute();
             $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $usuarios;
         } catch (PDOException $e) {
-            $e->getMessage();
+            
         }
     }
 }

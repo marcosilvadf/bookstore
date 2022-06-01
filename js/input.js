@@ -31,7 +31,6 @@ telefone.addEventListener("keypress", function (event){
     switch (telefone.value.length) {
         case 0:
             telefone.value += "("
-
             break;
 
         case 3:

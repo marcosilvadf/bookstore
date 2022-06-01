@@ -19,6 +19,51 @@
         <input type="submit" value="Pesquisar">
     </form>
 
+    <?php
+        session_start();
+            if(!empty($_SESSION['listaADM'])){
+                ?>
+        <table>
+        <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Data de cadastro</th>
+        <th>Data de Nascimento</th>
+        <th>celular</th>
+        <th>Tipo</th>
+        <th>Excluir</th>
+        <th>Editar</th>
+        <th>situação</th>
+        </tr>
+
+        <?php
+           foreach ( $_SESSION['listaADM'] as $usuario ) {
+            $data = date('d/m/Y', strtotime($usuario["data_nascimento"]));
+            $dataCad = date('d/m/Y', strtotime($usuario["data_cadastro"]));
+            $usuario["situacao"] == 'ativado' ? $situacao = 'checked' : $situacao = '';
+    
+            echo "<td>$usuario[nome]</td>";
+            echo "<td>$usuario[email]</td>";
+            echo "<td>$dataCad</td>";
+            echo "<td>$data</td>";
+            echo "<td>$usuario[celular]</td>";
+            echo "<td>$usuario[tipo]</td>";
+            echo "<td><a href='../controller/excluirUsuarioController.php?id={$usuario['id']}' class='btnExcluir'><i class='fa-solid fa-trash'></i></a></td>";
+            echo "<td><a href='../view/formAlterarUsuario.php?id={$usuario['id']}'><i class='fa-solid fa-pen-to-square'></i></a></td>";                
+            echo "<td>$usuario[situacao] <form action='../controller/editarSituacaoUsuarioController.php' method='GET'> <input type='checkbox' name='sit' id='' $situacao > <input type='hidden' name='idUser' value='$usuario[id]'> <input type='submit' value='salvar'> </form></td></tr>";
+        } 
+        ?>
+
+        <?php
+        unset($_SESSION['listaADM']);
+            }else{
+                if(isset($_SESSION['listaADM'])){
+                echo "nenhum registro";
+                unset($_SESSION['listaADM']);
+                }
+            }
+        ?>
+
     <table>
         <tr>
         <th>Nome</th>
