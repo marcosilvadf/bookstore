@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <a href="/view/formCadastrarUsuario.php">Logar</a>
+        <a href="/view/formCadastrarUsuario.php"><i class="fa-solid fa-user" style="font-size: 40px;"></i></a>
     </header>
 
     <main>        
