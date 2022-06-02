@@ -5,13 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>    
+    <link rel="shortcut icon" href="/image/iconeblack.png">
     <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/menu.css">
     <script src="lib/fontawesome/js/all.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <script src="/js/teste.js" defer></script>
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
 </head>
 <body>
     <header>
-        <a href="/view/formCadastrarUsuario.php"><i class="fa-solid fa-user" style="font-size: 40px;"></i></a>
+        <div>
+            <ul class="menu">
+                <i class="fa-solid fa-bars" onclick="showMenu()"  id="btnMenu"></i>
+                <li class="shMenu"><a href=""><span></span>Menu</a></li>
+                <li class="shMenu"><a href=""><span></span>Menu</a></li>
+                <li class="shMenu"><a href=""><span></span>Menu</a></li>
+                <li class="shMenu"><a href=""><span></span>Menu</a></li>
+            </ul>
+        </div>
+        <form action="/view/listarLivros.php" method="post" id="sch">
+            <input type="text" name="livro" id="" placeholder="Pesquisar">
+            <button id="btnSch"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+
+        <a href="/view/formCadastrarUsuario.php" id="btnSigin"><i class="fa-solid fa-user"></i><span>Entrar</span></a>
     </header>
 
     <main>        

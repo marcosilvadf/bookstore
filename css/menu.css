@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    justify-self: center;
+    justify-content: center;
+    border-bottom: 1px solid;
+    width: 99%;
+    height: 84.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+ul.menu{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin-right: auto;
+    margin-left: -20px;
+}
+
+#btnMenu{
+   margin-top: 3px;
+   margin-right: 15px;
+   font-size: 35px;
+   width: 30px;
+}
+
+ul.menu li.hide{
+    margin-top: -3px;
+    transition: 0.5s ease-in-out;
+}
+
+ul.menu li{
+    margin-top: 55px;
+    transition: 0.5s ease-in-out;
+}
+
+ul.menu li a{
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 4px;
+    color: black;
+    font-weight: bolder;
+}
+
+ul.menu li a span{
+    display: block;
+    position: absolute;
+    background: black;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+ul.menu li a:hover span{
+    transform: scaleY(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+#sch{
+    align-self: baseline;
+    margin-left: auto;
+    margin-right: 65px;
+    margin-top: 20px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#sch button{
+    padding: 5px 10px;
+}
+
+#sch input{
+    outline: none;
+    width: 300px;
+    height: 34.5px;
+}
+
+#btnSigin{
+    margin-left: auto;
+    margin-right: 25px;
+    margin-top: 5.78px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#btnSigin span{
+    font-size: 15px;
+}

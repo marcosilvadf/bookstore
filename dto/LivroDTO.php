@@ -11,6 +11,7 @@ class LivroDTO{
     private $genero;
 	private $situacao;
     private $sinopse;
+	private $campoValor;
 
 	public function getId(){
 		return $this->id;
@@ -118,6 +119,15 @@ class LivroDTO{
 
     public function setLivro($livro){
         $this->livro = $livro;
+
+    }
+
+    public function getCampoValor(){
+        return $this->campoValor;
+    }
+
+    public function setCampoValor($campoValor){
+        $this->campoValor = $campoValor;
 
     }
 }

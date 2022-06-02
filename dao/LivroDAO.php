@@ -62,4 +62,17 @@ class LivroDAO{
             $e->getMessage();
         }
     }
+
+    public function Pesquisarlivro(LivroDTO $livroDTO){
+        try {
+            $sql = "SELECT * FROM livro WHERE titulo like :valor OR subtitulo like :valor OR sinopse like :valor";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':valor', $livroDTO->getCampoValor());
+            $stmt->execute();
+            $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $livros;
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 }
