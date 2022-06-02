@@ -26,7 +26,7 @@
         $comentarios = $comentarioDAO->findById($idLivro);
         echo "<ul>";
             foreach ($comentarios as $comentario) {
-                echo "<li>$comentario[nome] - $comentario[comentario]";
+                echo "<li>$comentario[nome] - $comentario[comentario] ";
                 if(!empty($_SESSION['perfil'])){
                     if($_SESSION['perfil']['id'] == $comentario['idUser']){
                         echo " - <a href='../controller/excluirComentarioController.php?id={$comentario['id']}'>deletar</a></li>";
