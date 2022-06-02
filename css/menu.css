@@ -144,6 +144,7 @@ ul.menu li a:hover span{
 }
 
 #btnSigin{
+    cursor: pointer;
     color: black;
     margin-left: auto;
     margin-right: 25px;
@@ -166,18 +167,18 @@ ul.menu li a:hover span{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 92px;
-    right: 24px;
-    transition: 0.5s;
+    top: 91px;
+    right: 0px;
+    transition: 0.5s ease-in-out;
 }
 
 #optmenu{
-    background-color: rgba(0, 0, 0, 0.521);
     position: absolute;
-    top: 92px;
-    right: -120px;
-    width: 120px;
-    transition: 0.5s;
+    border: 1px solid black;
+    top: 91px;
+    right: -200px;
+    width: 150px;
+    transition: 0.5s ease-in-out;
 }
 
 #optmenu ul{

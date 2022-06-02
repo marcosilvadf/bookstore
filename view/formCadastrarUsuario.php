@@ -49,21 +49,6 @@ if(isset($_SESSION['perfil'])){
                         if(isset($_GET['msg'])){
                             echo $_GET['msg'];
                         }
-                        /* if(isset($_GET['semcadastro'])){
-                            echo "<span class='msg erro'>Você não possui cadastro</span>";
-                        }
-
-                        if(isset($_GET["sucesso"])){           
-                            echo "<span class='msg sucess'>Cadastro bem sucedido!</span>";
-                        }
-
-                        if(isset($_GET["alterado"])){
-                            echo "<span class='msg sucess'>Senha alterada com sucesso</span>";
-                        }
-                
-                        if(isset($_GET["usernone"])){
-                            echo "<span class='msg erro'>E-mail não cadastrado ou data de nascimento incorreta</span>";
-                        } */
                     ?>
                 </div>
 
