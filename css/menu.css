@@ -166,21 +166,28 @@ ul.menu li a:hover span{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 90px;
-    right: 100px;
+    top: 92px;
+    right: 24px;
     transition: 0.5s;
 }
 
 #optmenu{
-    background-color: rgba(0, 0, 0, 0.041);
+    background-color: rgba(0, 0, 0, 0.521);
     position: absolute;
-    top: 90px;
-    right: -50px;
+    top: 92px;
+    right: -120px;
+    width: 120px;
     transition: 0.5s;
+}
+
+#optmenu ul{
+    display: flex;
+    flex-direction: column;
 }
 
 #optmenu ul li{
     list-style: none;
+    margin-left: -30px;
 }
 
 #optmenu ul li a{
