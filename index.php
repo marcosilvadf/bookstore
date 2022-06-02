@@ -1,10 +1,17 @@
+<?php
+session_start();
+    if(!empty($_SESSION['perfil'])){
+        $nome = strtok($_SESSION['perfil']['nome'], " ");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>    
+    <title>Página Principal</title>
     <link rel="shortcut icon" href="/image/iconeblack.png">
     <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/css/menu.css">
@@ -16,7 +23,7 @@
     <header>
         <div>
             <ul class="menu">
-                <i class="fa-solid fa-bars" onclick="showMenu()"  id="btnMenu"></i>
+                <div onclick="showMenu()"  id="btnMenu"></div>
                 <li class="shMenu"><a href=""><span></span>Menu</a></li>
                 <li class="shMenu"><a href=""><span></span>Menu</a></li>
                 <li class="shMenu"><a href=""><span></span>Menu</a></li>
@@ -28,17 +35,26 @@
             <button id="btnSch"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
-        <a href="/view/formCadastrarUsuario.php" id="btnSigin"><i class="fa-solid fa-user"></i><span>Entrar</span></a>
+        <span id="btnSigin" onclick="showMenuProf()"><i class="fa-solid fa-user"></i><span><?= !empty($_SESSION['perfil'])? $nome : "Entrar" ?></span></span>
     </header>
 
-    <main>        
+    <main>  
+    
+        <div id="optmenu">
+            <ul>
+                <li><a href=""><span></span> perfil</a></li>
+                <li><a href=""><span></span> perfil</a></li>
+                <li><a href=""><span></span>perfil</a></li>
+                <li><a href="/controller/sairUsuarioController.php"><span></span> sair</a></li>
+            </ul>
+        </div>
+    
         <?php
             require_once './dao/LivroDAO.php';
             require_once './dao/GeneroDAO.php';
             $livroDAO = new LivroDAO();
             $generoDAO = new GeneroDAO();            
             $generos = $generoDAO->findAll();
-            session_start();
             
             foreach ($generos as $genero){
                 echo "<h1>$genero[nome]</h1>";

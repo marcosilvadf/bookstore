@@ -9,6 +9,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 header{
@@ -32,10 +33,46 @@ ul.menu{
 }
 
 #btnMenu{
+    cursor: pointer;
    margin-top: 3px;
    margin-right: 15px;
    font-size: 35px;
-   width: 30px;
+   width: 40px;
+   height: 40px;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#btnMenu::before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: black;
+    transform: translateY(-10px);
+    box-shadow: 0 10px black;
+    transition: 0.5s;
+}
+
+#btnMenu::after{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: black;
+    transform: translateY(10px);
+    transition: 0.5s;
+}
+
+#btnMenu.hide::before{
+    transform: translateY(0px) rotate(45deg);
+    box-shadow: 0 0px black;
+}
+
+#btnMenu.hide::after{
+    transform: translateY(0px) rotate(-45deg);
 }
 
 ul.menu li.hide{
@@ -48,6 +85,11 @@ ul.menu li{
     transition: 0.5s ease-in-out;
 }
 
+ul.menu li a:hover{
+    transition: 0.5s;
+    color: black;
+}
+
 ul.menu li a{
     position: relative;
     display: inline-block;
@@ -55,7 +97,7 @@ ul.menu li a{
     text-decoration: none;
     padding: 10px 15px;
     margin: 4px;
-    color: black;
+    color: rgba(0, 0, 0, 0.7);
     font-weight: bolder;
 }
 
@@ -91,7 +133,8 @@ ul.menu li a:hover span{
 }
 
 #sch button{
-    padding: 5px 10px;
+    width: 40px;
+    height: 34.5px;
 }
 
 #sch input{
@@ -101,9 +144,10 @@ ul.menu li a:hover span{
 }
 
 #btnSigin{
+    color: black;
     margin-left: auto;
     margin-right: 25px;
-    margin-top: 5.78px;
+    margin-top: 7px;
     font-size: 40px;
     display: flex;
     align-items: center;
@@ -112,4 +156,73 @@ ul.menu li a:hover span{
 
 #btnSigin span{
     font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#optmenu.hide{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 90px;
+    right: 100px;
+    transition: 0.5s;
+}
+
+#optmenu{
+    background-color: rgba(0, 0, 0, 0.041);
+    position: absolute;
+    top: 90px;
+    right: -50px;
+    transition: 0.5s;
+}
+
+#optmenu ul li{
+    list-style: none;
+}
+
+#optmenu ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+}
+
+#optmenu ul li{
+    transition: 0.5s ease-in-out;
+}
+
+#optmenu ul li a:hover{
+    transition: 0.5s;
+    color: black;
+}
+
+#optmenu ul li a{
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 4px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bolder;
+}
+
+#optmenu ul li a span{
+    display: block;
+    position: absolute;
+    background: black;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+#optmenu ul li a:hover span{
+    transform: scaleY(1);
+    transform-origin: left;
+    transition: transform 0.5s;
 }

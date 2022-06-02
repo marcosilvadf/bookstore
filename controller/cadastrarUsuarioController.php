@@ -18,10 +18,11 @@ $usuarioDTO->setDatanascimento($datanascimento);
 $usuarioDTO->setTelefone($telefone);
 $usuarioDTO->setTipo($tipo);
 $usuarioDTO->setSenha($senha);
+$usuarioDTO->setCampoValor($email);
 
 $usuarioDAO = new UsuarioDAO();
-
-    if(!empty($usuarioDAO->findByEmail($usuarioDTO))){
+$usuario = $usuarioDAO->Pesquisarusuario($usuarioDTO, "email");
+    if(!empty($usuario)){
         header("Location: ../view/formCadastrarUsuario.php?msg={$erros[5]}");
     }
 
