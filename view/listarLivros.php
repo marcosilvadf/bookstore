@@ -22,7 +22,7 @@
     $livroDAO = new LivroDAO();
     $livros = $livroDAO->Pesquisarlivro($livroDTO);
         foreach ($livros as $livro){
-            echo $livro['titulo'] . "<br>";
+            echo $livro['titulo'] . " <br>";
         }
     ?>
 </body>
