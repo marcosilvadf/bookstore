@@ -42,7 +42,7 @@ session_start();
             <ul>
                     <?php
                     if(!empty($_SESSION['perfil'])){
-                        echo "<li class='hPerfil'><a href=''><span></span><i class='fa-solid fa-user'></i> perfil</a></li>";
+                        echo "<li class='hPerfil'><a href='/view/Perfil.php'><span></span><i class='fa-solid fa-user'></i> perfil</a></li>";
                         if(!empty($_SESSION['perfil']['tipo'] == "autor"))
                             echo "<li class='hPerfil'><a href=''><span></span><i class='fa-solid fa-book'></i> Painel</a></li>";
                     }else{
@@ -58,16 +58,19 @@ session_start();
 
             <div id="carrossel">
                     <div class="carItem">
-                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
-                        <h3>teste</h3>
+                        <img src="/image/livrosCapas/628a82acd0217.jpg" alt="" style="width: 100px;">
                     </div>
                     <div class="carItem">
                         <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
-                        <h3>teste</h3>
                     </div>
                     <div class="carItem">
                         <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
-                        <h3>teste</h3>
+                    </div>
+                    <div class="carItem">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">                        
+                    </div>
+                    <div class="carItem">
+                        <img src="/image/livrosCapas/628a82acd0217.jpg" alt="" style="width: 100px;">                        
                     </div>
             </div>
 
