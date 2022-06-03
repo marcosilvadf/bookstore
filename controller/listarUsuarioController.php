@@ -23,11 +23,7 @@ $usuario = $usuarioDAO->logar($usuarioDTO);
             if($usuario['tipo'] == "administrador"){
                 header('Location: ../view/principalADM.php');
             }else{
-                if($usuario['tipo'] == "autor"){
-                    header('Location: ../view/formCadastrarLivro.php');
-                }else{
-                    header('Location: ../index.php');
-                }            
+                header('Location: ../index.php');          
             }
     }else{
         $msg = true;

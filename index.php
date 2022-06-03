@@ -37,18 +37,40 @@ session_start();
 
         <span id="btnSigin" onclick="showMenuProf()"><i class="fa-solid fa-user"></i><span><?= !empty($_SESSION['perfil'])? $nome : "Entrar" ?></span></span>
     </header>
-
-    <main>  
     
         <div id="optmenu">
             <ul>
-                <li><a href=""><span></span> perfil</a></li>
-                <li><a href=""><span></span> perfil</a></li>
-                <li><a href=""><span></span>perfil</a></li>
-                <li><a href="/controller/sairUsuarioController.php"><span></span> sair</a></li>
+                    <?php
+                    if(!empty($_SESSION['perfil'])){
+                        echo "<li class='hPerfil'><a href=''><span></span><i class='fa-solid fa-user'></i> perfil</a></li>";
+                        if(!empty($_SESSION['perfil']['tipo'] == "autor"))
+                            echo "<li class='hPerfil'><a href=''><span></span><i class='fa-solid fa-book'></i> Painel</a></li>";
+                    }else{
+                        echo "<li class='hPerfil'><a href='/view/formCadastrarUsuario.php'><span></span><i class='fa-solid fa-user'></i> Entrar</a></li>";
+                    }                 
+                    ?>
+                <li class='hPerfil'><a href=""><span></span>perfil</a></li>
+                <li class='hPerfil'><a href="/controller/sairUsuarioController.php"><span></span><i class="fa-solid fa-arrow-right-from-bracket"></i> sair</a></li>
             </ul>
         </div>
-    
+
+        <main>  
+
+            <div id="carrossel">
+                    <div class="carItem">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
+                        <h3>teste</h3>
+                    </div>
+                    <div class="carItem">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
+                        <h3>teste</h3>
+                    </div>
+                    <div class="carItem">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
+                        <h3>teste</h3>
+                    </div>
+            </div>
+
         <?php
             require_once './dao/LivroDAO.php';
             require_once './dao/GeneroDAO.php';

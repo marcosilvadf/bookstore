@@ -167,18 +167,23 @@ ul.menu li a:hover span{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 91px;
-    right: 0px;
-    transition: 0.5s ease-in-out;
 }
 
 #optmenu{
     position: absolute;
-    border: 1px solid black;
     top: 91px;
-    right: -200px;
+    right: 0px;
     width: 150px;
-    transition: 0.5s ease-in-out;
+}
+
+li.hPerfil.hide{
+    position: relative;
+    right: 0px;
+}
+
+li.hPerfil{
+    position: relative;
+    right: -200px;
 }
 
 #optmenu ul{
@@ -226,4 +231,22 @@ ul.menu li a:hover span{
     transform: scaleY(1);
     transform-origin: left;
     transition: transform 0.5s;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+#carrossel{
+    position: relative;
+    top: 100px;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    align-items: center;
+}
+
+.carItem{
+    margin: 0px 10px;
 }
