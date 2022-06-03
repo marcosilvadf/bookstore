@@ -51,7 +51,11 @@ session_start();
                     }                 
                     ?>
                 <li class='hPerfil'><a href=""><span></span>perfil</a></li>
-                <li class='hPerfil'><a href="/controller/sairUsuarioController.php"><span></span><i class="fa-solid fa-arrow-right-from-bracket"></i> sair</a></li>
+                <?php
+                if(!empty($_SESSION['perfil'])){
+                echo "<li class='hPerfil'><a href='/controller/sairUsuarioController.php'><span></span><i class='fa-solid fa-arrow-right-from-bracket'></i> sair</a></li>";
+                }
+                ?>
             </ul>
         </div>
 

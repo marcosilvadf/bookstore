@@ -3,7 +3,6 @@ require_once '../dto/PlaylistDTO.php';
 require_once '../dao/PlaylistDAO.php';
 require_once '../utils/erros.php';
 
-session_start();
 $titulo = $_POST["titulo"];
 
 $playlistDTO = new PlaylistDTO();
