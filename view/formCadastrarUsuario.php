@@ -15,6 +15,7 @@ if(isset($_SESSION['perfil'])){
         <title>Cadastrar Cliente</title>
         <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="shortcut icon" href="/image/iconeblack.png">
         <script src="../lib/fontawesome/js/all.min.js"></script>
         <script src="../js/input.js" defer></script>
         <script src="../js/changeForm.js" defer></script>

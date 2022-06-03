@@ -43,8 +43,9 @@ session_start();
                     <?php
                     if(!empty($_SESSION['perfil'])){
                         echo "<li class='hPerfil'><a href='/view/Perfil.php'><span></span><i class='fa-solid fa-user'></i> perfil</a></li>";
-                        if(!empty($_SESSION['perfil']['tipo'] == "autor"))
+                        if($_SESSION['perfil']['tipo'] == "autor"){
                             echo "<li class='hPerfil'><a href=''><span></span><i class='fa-solid fa-book'></i> Painel</a></li>";
+                        }
                     }else{
                         echo "<li class='hPerfil'><a href='/view/formCadastrarUsuario.php'><span></span><i class='fa-solid fa-user'></i> Entrar</a></li>";
                     }                 
