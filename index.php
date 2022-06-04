@@ -53,7 +53,7 @@ session_start();
                 <li class='hPerfil'><a href=""><span></span>perfil</a></li>
                 <?php
                 if(!empty($_SESSION['perfil'])){
-                echo "<li class='hPerfil'><a href='/controller/sairUsuarioController.php'><span></span><i class='fa-solid fa-arrow-right-from-bracket'></i> sair</a></li>";
+                    echo "<li class='hPerfil'><a href='/controller/sairUsuarioController.php'><span></span><i class='fa-solid fa-arrow-right-from-bracket'></i> sair</a></li>";
                 }
                 ?>
             </ul>
@@ -62,22 +62,23 @@ session_start();
         <main>  
 
             <div id="carrossel">
-                    <div class="carItem">
-                        <img src="/image/livrosCapas/628a82acd0217.jpg" alt="" style="width: 100px;">
+                    <div class="carItem ar2">
+                        <a href=""><img src="/image/livrosCapas/6288eb20c2c95.jpg" alt=""></a>
                     </div>
-                    <div class="carItem">
-                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
+                    <div class="carItem ar1">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">
                     </div>
-                    <div class="carItem">
-                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">
+                    <div class="carItem ar0">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">
                     </div>
-                    <div class="carItem">
-                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="" style="width: 100px;">                        
+                    <div class="carItem ar4">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">                        
                     </div>
-                    <div class="carItem">
-                        <img src="/image/livrosCapas/628a82acd0217.jpg" alt="" style="width: 100px;">                        
-                    </div>
+                    <div class="carItem ar3">
+                        <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">                        
+                    </div>                
             </div>
+            <button id="btn">teste</button>
 
         <?php
             require_once './dao/LivroDAO.php';

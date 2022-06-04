@@ -236,17 +236,37 @@ li.hPerfil{
 main{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #carrossel{
+    position: relative;
     align-self: center;
     margin-top: 10px;
-    display: flex;
+    width: 700px;
     overflow: hidden;
+    display: flex;
     height: 300px;
     align-items: center;
 }
 
 .carItem{
     margin: 0px 10px;
+    width: 100px;
+    transition: all 0.5s;
+    position: absolute;
 }
+.carItem img{
+    width: 100px;
+}
+
+.ar0, .ar1, .ar2, .ar3, .ar4{
+    top: 50px;
+    transition: 0.5s;
+}
+
+.ar0{right: 50px;}
+.ar1{right: 175px;}
+.ar2{right: 300px;}
+.ar3{right: 425px;}
+.ar4{right: 550px;}
