@@ -110,13 +110,7 @@ if(isset($_SESSION['perfil'])){
                     ?>
                 </div>
             </div>
-        </div>     
-            <?php
-            
-
-            
-
-            ?>
+        </div>
     <!-- <script src="../js/formatarInput.js"></script> -->
     </body>
     </html>

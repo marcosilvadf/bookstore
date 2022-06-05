@@ -40,7 +40,7 @@ class LivroDAO{
 
     public function findByGenero($generoIndice){
         try {
-            $sql = "SELECT * FROM livro WHERE GENERO_id=?";
+            $sql = "SELECT * FROM livro WHERE GENERO_id=? ";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(1, $generoIndice);
             $stmt->execute();
@@ -73,6 +73,30 @@ class LivroDAO{
             return $livros;
         } catch (PDOException $e) {
             $e->getMessage();
+        }
+    }
+
+    public function findFive(){
+        try {
+            $sql = "SELECT * FROM livro LIMIT 5";
+            $stmt =  $this->pdo->prepare($sql);
+            $stmt->execute();
+            $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $livros;
+        } catch (PDOException $e) {
+         echo $e->getMessage();   
+        }
+    }
+
+    public function findDestaque(){
+        try {
+            $sql = "SELECT l.titulo, l.capa, l.sinopse, MAX(a.livro_id) AS id FROM livro as l INNER JOIN acesso AS a ON a.livro_id = l.id;";
+            $stmt =  $this->pdo->prepare($sql);
+            $stmt->execute();
+            $livros = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $livros;
+        } catch (PDOException $e) {
+            echo $e->getMessage();   
         }
     }
 }

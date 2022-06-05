@@ -258,6 +258,7 @@ main{
 }
 .carItem img{
     width: 100px;
+    height: 141px;
 }
 
 .ar0, .ar1, .ar2, .ar3, .ar4{
@@ -270,3 +271,123 @@ main{
 .ar2{right: 300px;}
 .ar3{right: 425px;}
 .ar4{right: 550px;}
+
+.destaque{
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 330px;
+    display: flex;
+    flex-direction: row;
+}
+
+.livroDestaque{
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    width: 65%;
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.destaque img{
+    margin-left: 25px;
+    width: 200px;
+}
+
+.destaque h3{
+    text-transform: uppercase;
+    margin: auto auto;
+    font-size: 35px;
+}
+
+.modal{
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.7);
+    top: 50vh;
+    left: 50%;
+    width: 0%;
+    height: 0%;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+div.modal.show{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+}
+
+div.modal div{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 97%;
+    height: 94%;
+}
+
+.btnModal{
+    align-self: flex-end;
+    text-transform: uppercase;
+    width: 100px;
+}
+
+#foto{
+    cursor: pointer;
+}
+
+.escuro{
+    color: white;
+}
+
+body.escuro{
+    background-color: black;
+}
+
+#optmenu ul li a.escuro{
+    color: white;
+}
+
+.shMenu.escuro{
+    color: white;
+}
+
+.estante{
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+}
+
+.mLivro{
+    cursor: pointer;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 5px black;
+    margin-right: 20px;
+}
+
+.mLivro img{
+    width: 100%;
+    height: 300px;
+}
+
+.foto{
+    cursor: pointer;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}

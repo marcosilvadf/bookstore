@@ -11,7 +11,7 @@ class GeneroDAO{
 
     public function findAll(){
         try {
-            $sql = "SELECT * FROM genero";
+            $sql = "SELECT g.nome, g.id FROM genero as g INNER JOIN livro as l on l.genero_id = g.id GROUP BY g.id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             $generos = $stmt->fetchAll(PDO::FETCH_ASSOC);
