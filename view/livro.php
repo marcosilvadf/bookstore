@@ -1,9 +1,13 @@
 <?php
+require_once '../dao/LivroDAO.php';
+$livroDAO = new LivroDAO();
 session_start();
-    if((!isset($_SESSION['livro']) && (empty($_GET['idLivro'])))){
+    if(empty($_GET['idLivro'])){
         header("Location: ../index.php");
+    }else{
+        $idLivro = $_GET['idLivro'];
+        $livro = $livroDAO->findById($idLivro);       
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -28,7 +32,6 @@ session_start();
             }
         $_SESSION['livro'] = $livros;
         $livro = $_SESSION['livro'];
-        echo "<img src='$livro[capa]' alt=''>";
         echo "<h1>Título: $livro[titulo]</h1>";
         echo "<h2>Subtítulo: $livro[subtitulo]</h2>";
         echo "<h3>Ano de publicação: $livro[ano_publicacao]</h3>";

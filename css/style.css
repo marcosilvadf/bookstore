@@ -321,6 +321,15 @@ div.btnPass span{
     color: green;
 }
 
+div.linha{
+    display: flex;
+    flex-direction: row;
+}
+
+div.linha input.pq{
+    width: 100px;
+}
+
 @media (max-width: 991px){
     .container{
         max-width: 400px;

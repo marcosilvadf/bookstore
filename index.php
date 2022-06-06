@@ -44,7 +44,7 @@ session_start();
                     if(!empty($_SESSION['perfil'])){
                         echo "<li class='hPerfil'><a href='/view/Perfil.php'><span></span><i class='fa-solid fa-user'></i> perfil</a></li>";
                         if($_SESSION['perfil']['tipo'] == "autor"){
-                            echo "<li class='hPerfil'><a href=''><span></span><i class='fa-solid fa-book'></i> Painel</a></li>";
+                            echo "<li class='hPerfil'><a href='./view/painelAutor.php'><span></span><i class='fa-solid fa-book'></i> Painel</a></li>";
                         }
                     }else{
                         echo "<li class='hPerfil'><a href='/view/formCadastrarUsuario.php'><span></span><i class='fa-solid fa-user'></i> Entrar</a></li>";
@@ -78,9 +78,19 @@ session_start();
                             <div class="modal">
                                 <div>
                                     <h1><?= $livros['titulo']?></h1>
+                                    <span class="linha">Ano: <?=$livros['ano_publicacao']?> subtítulo: <?=$livros['subtitulo']?></span>
                                     <p><?=$livros['sinopse']?></p>
-                                    <a href="<?=$livros['livropath']?>" target="_blank">Ler livro</a>
-                                    <button class="btnModal">sair</button>
+                                    <a href="./view/livro.php?idLivro=<?=$livros['id']?>" target="_blank"><span class="btn">Ler livro</span></a>
+                                    <span class="comentario">Comentários
+                                    <?php
+                                        require_once '../bookstore/dao/comentarioDAO.php';
+                                        $comentarioDAO = new ComentarioDAO();
+                                        $comentarios = $comentarioDAO->findById($livros['id']);
+                                            foreach ($comentarios as $comentario){
+                                                echo "<p><i class='fa-solid fa-user'></i> $comentario[comentario] - $comentario[nome]</p>";
+                                            }
+                                    ?></span>
+                                    <span class="btnModal btn">sair</span>
                                 </div>
                             </div>
                         <?php
@@ -115,7 +125,7 @@ session_start();
                                     <h1><?= $destaque['titulo']?></h1>
                                     <p><?=$destaque['sinopse']?></p>
                                     <a href="<?=$destaque['livropath']?>" target="_blank">Ler livro</a>
-                                    <button class="btnModal">sair</button>
+                                    <span class="btnModal btn">sair</span>
                                 </div>
                             </div>
             </div>
@@ -130,7 +140,7 @@ session_start();
             $generos = $generoDAO->findAll();
             
             foreach ($generos as $genero){
-                echo "<h1>$genero[nome]</h1>";
+                echo "<h1 class='genero'>$genero[nome]</h1>";
                 echo "<div class='estante'>";
                 $generoIndice = $genero["id"];
                 $livros = $livroDAO->findByGenero($generoIndice);
@@ -151,7 +161,7 @@ session_start();
                                 <h1><?= $livro['titulo']?></h1>
                                 <p><?=$livro['sinopse']?></p>
                                 <a href="<?=$livro['livropath']?>" target="_blank">Ler livro</a>
-                                <button class="btnModal">sair</button>
+                                <span class="btnModal btn">sair</span>
                             </div>
                         </div>
 

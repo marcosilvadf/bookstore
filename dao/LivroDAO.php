@@ -78,7 +78,7 @@ class LivroDAO{
 
     public function findFive(){
         try {
-            $sql = "SELECT * FROM livro LIMIT 5";
+            $sql = "SELECT l.id, l.titulo, l.subtitulo, l.sinopse, l.ano_publicacao, l.capa, l.livropath, l.data_cadastro, l.situacao, l.GENERO_id FROM livro as l LIMIT 5";
             $stmt =  $this->pdo->prepare($sql);
             $stmt->execute();
             $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);

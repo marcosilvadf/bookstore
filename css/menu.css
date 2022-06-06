@@ -326,17 +326,32 @@ div.modal.show{
 }
 
 div.modal div{
+    padding: 20px;
     display: flex;
     flex-direction: column;
     background-color: white;
     width: 97%;
     height: 94%;
+    box-shadow: 1px 1px 4px black;
+    overflow-y: auto;
+}
+
+div.modal div a{
+    text-decoration: none;
+    color: black;
 }
 
 .btnModal{
+    cursor: pointer;
+    position: relative;
     align-self: flex-end;
     text-transform: uppercase;
     width: 100px;
+}
+
+div.modal.show .btnModal{
+    position: fixed;
+    top: 85vh;
 }
 
 #foto{
@@ -390,4 +405,43 @@ footer{
     align-items: center;
     justify-content: center;
     height: 100px;
+}
+
+span.comentario{
+    text-transform: uppercase;
+    margin: 10px 10px 20px 10px;
+    font-weight: bolder;
+}
+
+span.comentario p{
+    text-transform: lowercase;
+    margin: 10px 10px;
+    font-weight: bolder;
+}
+
+div.modal.show .btn{
+    position: fixed;
+    top: 85vh;
+}
+
+.btn{
+    background-color: #dbdbdb;
+    text-align: center;
+    border: 1px solid black;
+    transition: 0.1s;
+    padding: 5px;
+    letter-spacing: 1px;
+    width: 100px;
+}
+
+.btn:hover{
+    background-color: #c0c0c0;
+    text-align: center;
+    border: 1px solid black;
+    box-shadow: 1px 1px 3px black;
+    transition: 0.1s;
+}
+
+.genero{
+    align-self: flex-start;
 }
