@@ -15,5 +15,5 @@ $comentarioDTO->setComentario($coment);
 
 $comentarioDAO = new ComentarioDAO();
     if($comentarioDAO->save($comentarioDTO)){
-        header("Location: ../index.php");
+        echo '<script>history.go(-1)</script>';
     }

@@ -15,10 +15,18 @@ if(isset($_SESSION['perfil'])){
         <title>Cadastrar Cliente</title>
         <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/formulario.css">
         <link rel="shortcut icon" href="/image/iconeblack.png">
         <script src="../lib/fontawesome/js/all.min.js"></script>
         <script src="../js/input.js" defer></script>
         <script src="../js/changeForm.js" defer></script>
+        <style>
+            select{
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        </style>
     </head>
     <body class="login">
         <div class="container">
@@ -59,18 +67,11 @@ if(isset($_SESSION['perfil'])){
                         <input type="text" name="nome" id="" placeholder="Nome" pattern="^[A-zÀ-ú-\.\s]{3,100}$" title="Só é permitido letras e espaços." required>
                         <input type="email" name="email" id="" placeholder="E-mail" required>  
                         <input type="date" name="dtnasc" id="" required>
-                        <input type="tel" name="tel" id="tel" placeholder="Telefone" minlength="15" maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="Exemplo: (00) 00000-0000" required>
-                        <div class="contRadio">
-                            <div class="rad">
-                                <input type="radio" name="tipo" id="" value="cliente" checked>
-                                <label for="tipo">cliente</label>
-                            </div>  
-                            <div class="rad">
-                                <input type="radio" name="tipo" id="" value="autor">
-                                <label for="tipo">Autor
-                                </label>
-                            </div>     
-                        </div>                   
+                        <input type="tel" name="tel" id="tel" placeholder="Telefone" minlength="15" maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="Exemplo: (00) 00000-0000" required>                    
+                        <select name="tipo" id="">
+                            <option value="cliente" selected>Cliente</option>
+                            <option value="autor">Autor</option>
+                        </select>
                         <div class="btnPass">
                             <input type="password" name="senha" class="sen equalPass" placeholder="Senha" maxlength="10" required>                    
                             <span onclick="pass($n = 1)" class="toggle_om">Mostrar senha</i></span>

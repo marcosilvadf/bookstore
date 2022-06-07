@@ -3,10 +3,11 @@ session_start();
     if(!isset($_SESSION['perfil'])){
     echo "
     <script>
-    window.location.assign('formCadastrarCliente.php');
+    history.go(-1)
     </script>
     ";
     }  
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -16,27 +17,33 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil BookStore</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        div{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 500px;
+        }
+
+        div a{
+            justify-self: flex-end;
+        }
+
+        div span{
+            align-self: center;
+        }
+    </style>
 </head>
 <body>
     <div class="principal">
         <div class="informacao">
         <h2>Perfil</h2>
-            <?php 
-            $userName = $_SESSION['perfil']['nome'];
-            $userMail = $_SESSION['perfil']['email'];
-            $userNasc = date('d/m/Y', strtotime($_SESSION['perfil']['nascimento']));
-            $userTel = $_SESSION['perfil']['telefone'];
-            $userPass = $_SESSION['perfil']['senha'];
-            $userCad = $_SESSION['perfil']['datacadastro'];
-            $dataFormatada = date('d/m/Y H:i:s', strtotime($userCad));
-            echo "<p>$userName</p>";
-            echo "<p>$userMail</p>";
-            echo "<p>$userNasc</p>";
-            echo "<p>$userTel</p>";
-            echo "<p>$userPass</p>";
-            echo "<p>$dataFormatada</p>";
-            ?>        
-            <a href="../controller/sairClienteController.php" onclick="return sair(event)">Sair</a>    
+        <div>
+            <span><?=$_SESSION['perfil']['nome']?></span>
+            <span><?=$_SESSION['perfil']['email']?></span>
+            <span><?=date("d/m/Y", strtotime($_SESSION['perfil']['data_nascimento']))?></span>     
+            <a href="../view/formAlterarUsuario.php?id=<?=$_SESSION['perfil']['id']?>">Editar perfil</a>
+            <a href="../controller/sairClienteController.php" onclick="return sair(event)">Sair</a>
         </div>
     </div>
 

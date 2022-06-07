@@ -13,7 +13,7 @@
         }
 
         private function extPerm( $extensao ){
-            $extensoes = array( 'gif', 'jpeg', 'jpg', 'png' ); //
+            $extensoes = array( 'gif', 'jpeg', 'jpg', 'png', 'pdf' ); //
             if ( in_array( $extensao, $extensoes ) ) {
                 return true;
             }
@@ -25,8 +25,8 @@
     
                 $destino = $pasta . $this->nome;
     
-                if ( $arquivo['size'] > ( 5 * ( 1024 * 1024 ) ) ) {
-                    throw new RuntimeException( 'O tamanho do arquivo deve ser no máximo 5 MB.' );
+                if ( $arquivo['size'] > ( 10 * ( 1024 * 1024 ) ) ) {
+                    throw new RuntimeException( 'O tamanho do arquivo deve ser no máximo 10 MB.' );
                 }
     
                 if ( $this->extPerm( $extensao ) ) {

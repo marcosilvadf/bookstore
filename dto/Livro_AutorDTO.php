@@ -6,6 +6,8 @@ class PagamentoDTO {
     private $dataCadastro;
     private $valor;
     private $tipoPagamento;
+    private $comprovante;
+    private $precoId;
 
     public function getLivroId(){
         return $this->livroId;
@@ -45,5 +47,23 @@ class PagamentoDTO {
 
     public function setTipoPagamento($tipoPagamento){
         $this->tipoPagamento = $tipoPagamento;
+    }
+
+    public function getComprovante(){
+        return $this->comprovante;
+    }
+
+    public function setComprovante($comprovante){
+        $this->comprovante = $comprovante;
+
+    }
+
+    public function getPrecoId(){
+        return $this->precoId;
+    }
+
+    public function setPrecoId($precoId){
+        $this->precoId = $precoId;
+
     }
 }

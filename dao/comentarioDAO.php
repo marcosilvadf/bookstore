@@ -1,6 +1,5 @@
 <?php
 require_once 'conexao/Conexao.php';
-require_once './dto/comentarioDTO.php';
 
 class ComentarioDAO{
     private $pdo;

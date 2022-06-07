@@ -14,7 +14,7 @@ $acessoDTO->setPlaylistId($idPlayl);
 
 $acessoDAO = new AcessoDAO();
     if($acessoDAO->savePlayl($acessoDTO)){
-        header("Location: ../index.php");
+        echo '<script>history.go(-1)</script>';
     }else{
         echo "Erro ao cadastrar: ", $e->getMessage();
     }

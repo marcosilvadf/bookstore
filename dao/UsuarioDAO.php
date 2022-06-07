@@ -94,16 +94,19 @@ class UsuarioDAO{
     }
 
     public function update(UsuarioDTO $usuarioDTO){
-            $sql = "UPDATE usuario set nome=:nome, email=:email, data_nascimento=:dtnasc, tipo=:tipo, celular=:tel, senha=:senha where id=:id";
+        try {
+            $sql = "UPDATE usuario set nome=:nome, data_nascimento=:dtnasc, tipo=:tipo, celular=:tel where id=:id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(":nome", $usuarioDTO->getNome());
-            $stmt->bindValue(":email", $usuarioDTO->getEmail());
             $stmt->bindValue(":dtnasc", $usuarioDTO->getDatanascimento());
             $stmt->bindValue(":tipo", $usuarioDTO->getTipo());
             $stmt->bindValue(":tel", $usuarioDTO->getTelefone());
-            $stmt->bindValue(":senha", $usuarioDTO->getSenha());
             $stmt->bindValue(":id", $usuarioDTO->getId());
             return $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+            
     }
 
     public function deleteById($idUsuario){

@@ -23,7 +23,7 @@ session_start();
     </header>
     <main>
         <a href="listarTodosUsuarios.php">Gerenciar usuários</a>
-        <a href="">Gerenciar Livros</a>
+        <a href="gerenciarLivrosADM.php">Gerenciar Livros</a>
         <a href="">Gerenciar Pagamentos</a>
         <a href="">Gerenciar Comentários</a>
     </main>

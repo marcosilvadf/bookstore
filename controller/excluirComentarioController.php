@@ -7,5 +7,5 @@ $id = $_GET['id'];
 
 $comentarioDAO = new ComentarioDAO();
     if($comentarioDAO->deleteById($id)){
-        header("Location: ../index.php");
+        echo '<script>history.go(-1)</script>';
     }

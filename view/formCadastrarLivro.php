@@ -7,6 +7,7 @@
     <title>Cadastrar Livro</title>
     <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/formulario.css">
     <script src="../lib/fontawesome/js/all.min.js"></script>
 </head>
 <body>
@@ -24,40 +25,47 @@
                     <form action="../controller/cadastrarLivroController.php" method="post" enctype="multipart/form-data">
                         <h3>Cadastrar</h3>
                         <input type="text" name="titulo" id="" placeholder="Título" title="Digite aqui o título do seu livro" required>
-                        <input type="text" name="subtitulo" id="" placeholder="Subtítulo" title="Digite aqui o subtítulo do seu livro" required>
-                        <div style="display: flex; flex-direction: row;">
-                            <label for="anoPublicacao">Ano de publicação</label>
-                            <select name="anoPublicacao" id="anoP">                            
-                            </select>
+                        <input type="text" name="subtitulo" id="" placeholder="Subtítulo" title="Digite aqui o subtítulo do seu livro" required>                        
+                        <div class="linha">
+                            <label for="capa" class="legend">Capa</label>
+                            <input type="file" name="capa" id="capa" class="campoFile" accept=".jpg" style="width: 80%;" title="Foto da capa do livro: apenas no formato png e jpg">
+                        </div>
+                        <div class="linha">
+                            <label for="pdf" class="legend">Livro</label>
+                            <input type="file" name="livro" id="pdf" class="campoFile" accept=".pdf" title="Seu  livro: apenas no formato pdf">
                         </div>
 
-                        <script defer>
-                            const anoP = document.querySelector("#anoP")                            
-                            var dataAtual = new Date().getFullYear();                            
-                                for(var i = dataAtual - 50; i <= dataAtual; dataAtual--){
-                                    var option = document.createElement("option")
-                                    option.setAttribute("value", dataAtual)
-                                    option.textContent = dataAtual
-                                    anoP.appendChild(option)
-                                }                        
-                        </script>
-
-                        <input type="file" name="capa" id="" accept="image/*" title="Foto da capa do livro">
-                        <input type="file" name="livro" id="" title="Seu  livro em pdf">
-                        <select name="genero" id="">
-                        <option value="" disabled selected>Selecione</option>
+                        <div class="lSelect" style="display: grid; flex-direction: row;grid-template-columns: 50% 50%; height: 40px ; margin: 5px 0px 10px 0px;">
+                        <select name="genero" id="" style="width: 98%; height: 100%; border-radius: 5px;">
+                        <option value="" disabled selected>Gênero</option>
                             <?php
                             require_once '../dao/GeneroDAO.php';
 
                             $generoDAO = new GeneroDAO();
-                            $generos = $generoDAO->findAll();
+                            $generos = $generoDAO->findList();
 
                             foreach ($generos as $genero){
                                 echo "<option value='$genero[id]'>$genero[nome]</option>";
                             }
                             ?>                                                    
                         </select>
-                        <textarea name="sinopse" id="" cols="30" rows="4" placeholder="Sinopse"></textarea>
+
+                        <select name="anoPublicacao" id="anoP" style="justify-self: flex-end;"> 
+                                <option value="" selected disabled>ano de publicação</option>
+                                <script defer>
+                                const anoP = document.querySelector("#anoP")                            
+                                var dataAtual = new Date().getFullYear();                            
+                                    for(var i = dataAtual - 50; i <= dataAtual; dataAtual--){
+                                        var option = document.createElement("option")
+                                        option.setAttribute("value", dataAtual)
+                                        option.textContent = dataAtual
+                                        anoP.appendChild(option)
+                                    }                        
+                                </script>                           
+                            </select>
+                        </div>
+
+                        <textarea name="sinopse" id="" cols="30" rows="4" placeholder="Sinopse" ></textarea>
                         <input type="submit" value="Cadastrar">
                     </form>                
                     <?php

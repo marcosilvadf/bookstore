@@ -16,7 +16,11 @@ session_start();
     <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/css/menu.css">
     <script src="lib/fontawesome/js/all.min.js"></script>
+    <script src="./js/carrossel.js" defer></script>
     <script src="/js/teste.js" defer></script>
+    <style>
+        
+    </style>
     <!-- <link rel="stylesheet" href="css/main.css"> -->
 </head>
 <body>
@@ -50,7 +54,6 @@ session_start();
                         echo "<li class='hPerfil'><a href='/view/formCadastrarUsuario.php'><span></span><i class='fa-solid fa-user'></i> Entrar</a></li>";
                     }                 
                     ?>
-                <li class='hPerfil'><a href=""  id="escuro"><span></span>escuro</a></li>
                 <?php
                 if(!empty($_SESSION['perfil'])){
                     echo "<li class='hPerfil'><a href='/controller/sairUsuarioController.php'><span></span><i class='fa-solid fa-arrow-right-from-bracket'></i> sair</a></li>";
@@ -64,7 +67,7 @@ session_start();
         <div id="carrossel">
 
                 <?php
-                    require_once '../bookstore/dao/LivroDAO.php';
+                    require_once './dao/LivroDAO.php';
                     $livroDAO = new LivroDAO();
                     $livro = $livroDAO->findFive();
                     $index = 2;
@@ -74,44 +77,25 @@ session_start();
                             }
                         echo "<div class='carItem $index foto'><img src='$livros[capa]' alt=''></div>";
                         $index--;
-                        ?>
-                            <div class="modal">
-                                <div>
-                                    <h1><?= $livros['titulo']?></h1>
-                                    <span class="linha">Ano: <?=$livros['ano_publicacao']?> subtítulo: <?=$livros['subtitulo']?></span>
-                                    <p><?=$livros['sinopse']?></p>
-                                    <a href="./view/livro.php?idLivro=<?=$livros['id']?>" target="_blank"><span class="btn">Ler livro</span></a>
-                                    <span class="comentario">Comentários
-                                    <?php
-                                        require_once '../bookstore/dao/comentarioDAO.php';
+                        echo     "<div class='modal'>";
+                        echo     "       <div>";
+                        echo     "            <h1>$livros[titulo]</h1>";
+                        echo     "            <span class='linha'>Ano: $livros[ano_publicacao] subtítulo: $livros[subtitulo]</span>";
+                        echo     "            <p>$livros[sinopse]</p>";
+                        echo     "           <a href='./view/livro.php?idLivro=$livros[id]' target='_blank'><span class='btn'>Ler livro</span></a>";
+                        echo     "            <span class='comentario'>Comentários";
+                                        require_once './dao/comentarioDAO.php';
                                         $comentarioDAO = new ComentarioDAO();
                                         $comentarios = $comentarioDAO->findById($livros['id']);
                                             foreach ($comentarios as $comentario){
                                                 echo "<p><i class='fa-solid fa-user'></i> $comentario[comentario] - $comentario[nome]</p>";
                                             }
-                                    ?></span>
-                                    <span class="btnModal btn">sair</span>
-                                </div>
-                            </div>
-                        <?php
+                                            echo     "</span>";
+                                            echo     "<span class='btnModal btn'>sair</span>";
+                                            echo     "</div>";
+                                            echo     "</div>";
                     }
-                ?>
-
-            <!-- <div class="carItem ar2 foto">
-                <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">
-            </div>
-            <div class="carItem ar1 foto">
-                <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">
-            </div>
-            <div class="carItem ar0 foto">
-                <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">
-            </div>
-            <div class="carItem ar4 foto">
-                <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">                        
-            </div>
-            <div class="carItem ar3 foto">
-                <img src="/image/livrosCapas/6288eb20c2c95.jpg" alt="">                        
-            </div>         -->        
+                ?>    
         </div>
 
         <div class="destaque">
@@ -120,14 +104,25 @@ session_start();
             ?>
             <div class="livroDestaque">
                 <img src="<?=$destaque['capa']?>" alt="" class="foto">
-                <div class="modal">
-                                <div>
-                                    <h1><?= $destaque['titulo']?></h1>
-                                    <p><?=$destaque['sinopse']?></p>
-                                    <a href="<?=$destaque['livropath']?>" target="_blank">Ler livro</a>
-                                    <span class="btnModal btn">sair</span>
-                                </div>
-                            </div>
+                <?php
+                echo     "<div class='modal'>";
+                        echo     "       <div>";
+                        echo     "            <h1>$destaque[titulo]</h1>";
+                        echo     "            <span class='linha'>Ano: $destaque[ano_publicacao] subtítulo: $destaque[subtitulo]</span>";
+                        echo     "            <p>$destaque[sinopse]</p>";
+                        echo     "           <a href='./view/livro.php?idLivro=$destaque[id]' target='_blank'><span class='btn'>Ler livro</span></a>";
+                        echo     "            <span class='comentario'>Comentários";
+                                        require_once './dao/comentarioDAO.php';
+                                        $comentarioDAO = new ComentarioDAO();
+                                        $comentarios = $comentarioDAO->findById($destaque['id']);
+                                            foreach ($comentarios as $comentario){
+                                                echo "<p><i class='fa-solid fa-user'></i> $comentario[comentario] - $comentario[nome]</p>";
+                                            }
+                                            echo     "</span>";
+                                            echo     "<span class='btnModal btn'>sair</span>";
+                                            echo     "</div>";
+                                            echo     "</div>";
+                                            ?>
             </div>
             <h3>livro em destaque</h3>
         </div>
@@ -149,23 +144,24 @@ session_start();
                         echo "<img src='$livro[capa]' alt='' class='capa'>";        
                         echo "<span class='linha'></span>";
                         echo "<h4 class='tLivro'>$livro[titulo]</h4>";
-                        /* echo "<p style='margin-right: 10px;'><a href='/view/livro.php?idLivro=$livro[id]'>Livro</a></p>";
-                            if(!empty($_SESSION['perfil'])){
-                            echo "<p><a href='/view/listarPlaylists.php?idLivro={$livro['id']}' target='_blank'>Adicionar a playlist</a></p>";                                                       
-                            }                        
-                        echo "<a href='/view/comentario.php?idLivro={$livro['id']}' style='margin-left: 10px;'>Comentarios</a>";*/
                         echo "</div>";
-                        ?>
-                        <div class="modal">
-                            <div>
-                                <h1><?= $livro['titulo']?></h1>
-                                <p><?=$livro['sinopse']?></p>
-                                <a href="<?=$livro['livropath']?>" target="_blank">Ler livro</a>
-                                <span class="btnModal btn">sair</span>
-                            </div>
-                        </div>
-
-                        <?php
+                        echo     "<div class='modal'>";
+                        echo     "       <div>";
+                        echo     "            <h1>$livro[titulo]</h1>";
+                        echo     "            <span class='linha'>Ano: $livro[ano_publicacao] subtítulo: $livro[subtitulo]</span>";
+                        echo     "            <p>$livro[sinopse]</p>";
+                        echo     "           <a href='./view/livro.php?idLivro=$livro[id]' target='_blank'><span class='btn'>Ler livro</span></a>";
+                        echo     "            <span class='comentario'>Comentários";
+                                        require_once './dao/comentarioDAO.php';
+                                        $comentarioDAO = new ComentarioDAO();
+                                        $comentarios = $comentarioDAO->findById($livro['id']);
+                                            foreach ($comentarios as $comentario){
+                                                echo "<p><i class='fa-solid fa-user'></i> $comentario[comentario] - $comentario[nome]</p>";
+                                            }
+                                            echo     "</span>";
+                                            echo     "<span class='btnModal btn'>sair</span>";
+                                            echo     "</div>";
+                                            echo     "</div>";
                             }   
                         echo "</div>";
             }            

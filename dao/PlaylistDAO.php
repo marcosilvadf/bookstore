@@ -2,7 +2,6 @@
 require_once 'conexao/Conexao.php';
 require_once '../dto/PlaylistDTO.php';
 require_once '../dao/acessoDAO.php';
-session_start();
 
 class PlaylistDAO{
     private $pdo;
@@ -13,7 +12,7 @@ class PlaylistDAO{
         $this->acessoDAO = new AcessoDAO();
     }
 
-    public function salvar(PlaylistDTO $playlistDTO){
+    public function salvar(PlaylistDTO $playlistDTO, $usuarioID){
         try {
             $this->pdo->beginTransaction();
             $sql = "INSERT INTO playlist(titulo) VALUES(?)";
@@ -25,7 +24,7 @@ class PlaylistDAO{
             $sql = "INSERT INTO acesso(playlist_id, usuario_id) VALUES (?, ?)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(1, $lastId);
-            $stmt->bindValue(2, $_SESSION['perfil']['id']);
+            $stmt->bindValue(2, $usuarioID);
             $stmt->execute();
             return $this->pdo->commit();
         } catch (PDOException $e) {
@@ -36,7 +35,7 @@ class PlaylistDAO{
 
     public function findByIdUser($idUser){
         try {
-            $sql = "SELECT p.titulo, u.nome, p.situacao, p.id FROM acesso AS a INNER JOIN playlist AS p ON a.playlist_id = p.id INNER JOIN usuario AS u ON a.USUARIO_id = u.id WHERE u.id = ?";
+            $sql = "SELECT p.titulo, u.nome, p.situacao, p.id FROM acesso AS a INNER JOIN playlist AS p ON a.playlist_id = p.id INNER JOIN usuario AS u ON a.USUARIO_id = u.id WHERE u.id = ? GROUP BY p.id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(1, $idUser);
             $stmt->execute();

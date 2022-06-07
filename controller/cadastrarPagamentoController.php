@@ -2,22 +2,36 @@
 session_start();
 require_once '../dao/pagamentoDAO.php';
 require_once '../dto/Livro_AutorDTO.php';
+require_once '../utils/uploadImage.php';
+require_once '../dao/AutorDAO.php';
 
-$autorId = $_SESSION['perfil']['id'];
-$valor = $_POST["valor"];
+define('DIR_CAPA', $_SERVER['DOCUMENT_ROOT'] . "/image/comprovantes/");
+
+$autorDAO = new AutorDAO();
+$autorId = $autorDAO->findByIdCad($_SESSION['perfil']['id']);
+
+
+$livroId = $_POST['idLivro'];
+$data = $_POST['data'];
+$valor = str_replace(",", ".", str_replace("R$ ", "", $_POST["valor"])) ;
 $tipoPagamento = $_POST["tipoP"];
+$comprovante = $_FILES['comp'];
+$precoId = $_POST["precoId"];
+
+$uploadImg = new UploadImage($comprovante);
 
 $pagamentoDAO = new PagamentoDAO();
-
-$autor = $pagamentoDAO->findById($autorId);
-
 $pagamentoDTO = new PagamentoDTO();
-$pagamentoDTO->setAutorId($autor);
+$pagamentoDTO->setLivroId($livroId);
+$pagamentoDTO->setAutorId($autorId['id']);
+$pagamentoDTO->setDataCadastro($data);
 $pagamentoDTO->setValor($valor);
 $pagamentoDTO->setTipoPagamento($tipoPagamento);
+chmod ("/image/comprovantes/", 0777);
+$pagamentoDTO->setComprovante(isset($comprovante) && $comprovante['error'] == 0 ? "/image/comprovantes/".$uploadImg->getNome($comprovante) : "sem");
+$pagamentoDTO->setPrecoId($precoId);
 
-print_r($pagamentoDTO);
-exit;
     if($pagamentoDAO->save($pagamentoDTO)){
-        echo "cadastro bem sucessido!";
+        $uploadImg->salvar($comprovante, DIR_CAPA);
+        header("Location: ../view/painelAutor.php");
     }

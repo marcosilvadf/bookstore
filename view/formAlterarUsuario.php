@@ -7,7 +7,15 @@
         <title>Alterar Usuário</title>
         <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/formulario.css">
         <script src="../lib/fontawesome/js/all.min.js"></script>
+        <style>
+            select{
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        </style>
         <script src="../js/input.js" defer></script>
     </head>
     <body class="login">
@@ -39,22 +47,15 @@
                         <h3>Editar</h3>
                         <input type="hidden" name="id" id="" value="<?= $usuario['id'] ?>">
                         <input type="text" name="nome" id="" placeholder="Nome" pattern="^[A-zÀ-ú-\.\s]{3,100}$" title="Só é permitido letras e espaços." required value="<?php echo $usuario['nome'] ?>">
-                        <input type="email" name="email" id="" placeholder="E-mail" required value="<?php echo $usuario['email'] ?>">  
                         <input type="date" name="dtnasc" id="" required value="<?php echo $usuario['data_nascimento'] ?>">
-                        <input type="tel" name="tel" id="tel" placeholder="Telefone" minlength="15" maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="Exemplo: (00) 00000-0000" required value="<?php echo $usuario['celular'] ?>">
-                        <div class="contRadio">
-
-                            <div class="rad">
-                                <input type="radio" name="tipo" id="" value="cliente" <?= $usuario['tipo'] == "cliente" ? "checked": "" ?>>
-                                <label for="tipo">cliente</label>
-                            </div>  
-                            <div class="rad">
-                                <input type="radio" name="tipo" id="" value="autor" <?= $usuario['tipo'] == "autor" ? "checked": "" ?>>
-                                <label for="tipo">Autor
-                                </label>
-                            </div>  
-                        </div>                                              
-                        <input type="submit" value="Cadastrar">
+                        <input type="tel" name="tel" id="tel" placeholder="Telefone" minlength="15" maxlength="15" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="Exemplo: (00) 00000-0000" required value="<?php echo $usuario['celular'] ?>">  
+                        <div class="rad">              
+                        <select name="tipo" id="">
+                            <option value="cliente" <?= $usuario['tipo'] == "cliente" ? "selected": "" ?>>Cliente</option>
+                            <option value="autor" <?= $usuario['tipo'] == "autor" ? "selected": "" ?>>Autor</option>
+                        </select>
+                        </div>                                                
+                        <input type="submit" value="Cadastrar" >
                     </form>                
                 </div>
                     <?php

@@ -1,7 +1,8 @@
 <?php
 require_once '../dao/AutorDAO.php';
+session_start();
 
-$userID = $_GET['id'];
+$userID = $_SESSION['perfil']['id'];
     if(empty($userID)){
         header("Location: ../index.php");
     }

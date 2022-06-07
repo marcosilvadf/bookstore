@@ -1,6 +1,4 @@
 <?php
-require_once '../dto/UsuarioDTO.php';
-require_once '../dto/autorDTO.php';
 require_once 'conexao/Conexao.php';
 
 class AutorDAO{
@@ -35,7 +33,7 @@ class AutorDAO{
 
     public function save(AutorDTO $autorDTO){
         try {
-            $sql = "UPDATE autor SET logradouro = ?, complento = ?, numero = ?, bairro = ?, cidade = ?, cpf = ?, uf = ?, cep = ? WHERE usuario_id = ?";
+            $sql = "UPDATE autor SET logradouro = ?, complemento = ?, numero = ?, bairro = ?, cidade = ?, cpf = ?, uf = ?, cep = ? WHERE usuario_id = ?";
             $stmt = $this->pdo->prepare( $sql );
             $stmt->bindValue(1, $autorDTO->getLogradouro());
             $stmt->bindValue(2, $autorDTO->getComplemento());
@@ -47,6 +45,18 @@ class AutorDAO{
             $stmt->bindValue(8, $autorDTO->getCep());
             $stmt->bindValue(9, $autorDTO->getIdUser());
             return $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();           
+        }
+    }
+
+    public function findByIdCad($userID){
+        try {
+            $sql = "SELECT * FROM autor WHERE usuario_id = $userID";
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->execute();
+            $autor = $stmt->fetch(PDO::FETCH_ASSOC);            
+            return $autor;
         } catch (PDOException $e) {
             echo $e->getMessage();           
         }

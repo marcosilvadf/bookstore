@@ -12,6 +12,6 @@ $_SESSION['perfil'];
     <title>Painel do autor</title>
 </head>
 <body>
-    <a href="../controller/cadastrarAutorController.php?id=<?=$_SESSION['perfil']['id']?>">Adicionar Livro</a>
+    <a href="../controller/cadastrarAutorController.php">Adicionar Livro</a>
 </body>
 </html>

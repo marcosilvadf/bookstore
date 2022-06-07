@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar clientes</title>
     <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../css/tabela.css">
     <script src="../lib/fontawesome/js/all.min.js"></script>
     <script src="../js/alerts.js" defer></script>
 </head>
@@ -50,7 +51,7 @@
             echo "<td>$usuario[tipo]</td>";
             echo "<td><a href='../controller/excluirUsuarioController.php?id={$usuario['id']}' class='btnExcluir'><i class='fa-solid fa-trash'></i></a></td>";
             echo "<td><a href='../view/formAlterarUsuario.php?id={$usuario['id']}'><i class='fa-solid fa-pen-to-square'></i></a></td>";                
-            echo "<td>$usuario[situacao] <form action='../controller/editarSituacaoUsuarioController.php' method='GET'> <input type='checkbox' name='sit' id='' $situacao > <input type='hidden' name='idUser' value='$usuario[id]'> <input type='submit' value='salvar'> </form></td></tr>";
+            echo "<td><div class='linha'>$usuario[situacao] <form action='../controller/editarSituacaoUsuarioController.php' method='GET'> <input type='checkbox' name='sit' id='' $situacao > <input type='hidden' name='idUser' value='$usuario[id]'> <input type='submit' value='salvar'> </form></div></td></tr>";
         } 
         ?>
 
@@ -96,7 +97,7 @@
         echo "<td>$usuario[tipo]</td>";
         echo "<td><a href='../controller/excluirUsuarioController.php?id={$usuario['id']}' class='btnExcluir'><i class='fa-solid fa-trash'></i></a></td>";
         echo "<td><a href='../view/formAlterarUsuario.php?id={$usuario['id']}'><i class='fa-solid fa-pen-to-square'></i></a></td>";                
-        echo "<td>$usuario[situacao] <form action='../controller/editarSituacaoUsuarioController.php' method='GET'> <input type='checkbox' name='sit' id='' $situacao > <input type='hidden' name='idUser' value='$usuario[id]'> <input type='submit' value='salvar'> </form></td></tr>";
+        echo "<td><div class='linha'>$usuario[situacao] <form action='../controller/editarSituacaoUsuarioController.php' method='GET'> <input type='checkbox' name='sit' id='' $situacao > <input type='hidden' name='idUser' value='$usuario[id]'> <input type='submit' value='salvar'> </form></div></td></tr>";
     }
     ?>
     </th>
