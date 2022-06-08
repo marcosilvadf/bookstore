@@ -24,12 +24,13 @@
     $pagamentoDAO = new PagamentoDAO();
     $pagamentos = $pagamentoDAO->listaDePagamento();
 
-    foreach ( $pagamentos as $pagamento ) {
+    foreach ( $pagamentos as $pagamento ){
         $pagamento['comprovante'] == "sem" ? $pago = 'sem pagamento' : $pago = "Pagou";
         echo "<tr><td>$pagamento[nome]</td>";
         echo "<td>$pagamento[titulo]</td>";
         echo "<td>$pago</td>";
-        echo "<td><a href='../controller/situacaoPagamento.php?id=$pagamento[id]'><i class='fa-solid fa-pen-to-square'></i></a></td></tr>";
+        $pagamento['situacao'] == 'ativado' ? $situa = "<i class='fa-solid fa-check'></i>" :$situa = "<i class='fa-solid fa-x'></i>";
+        echo "<td><a href='../controller/situacaoPagamento.php?id=$pagamento[id]'>$situa</a></td></tr>";
     }
     ?>
     </th>

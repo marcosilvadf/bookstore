@@ -53,7 +53,7 @@ class PagamentoDAO{
 
     public function listaDePagamento(){
         try {
-            $sql = "SELECT l.id, u.nome, l.titulo, p.comprovante from pagamento as p INNER join autor as a ON a.id = p.autor_id inner join livro as l on l.id = p.livro_id inner join usuario as u on a.usuario_id = u.id;";
+            $sql = "SELECT l.id, u.nome, l.titulo, p.comprovante, l.situacao from pagamento as p INNER join autor as a ON a.id = p.autor_id inner join livro as l on l.id = p.livro_id inner join usuario as u on a.usuario_id = u.id;";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             $autor = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,9 +1,9 @@
 <?php
 require_once '../dao/UsuarioDAO.php';
 require_once '../dto/UsuarioDTO.php';
-
+session_start();
 $idUser = $_GET['idUser'];
-    if(empty($_GET['sit'])){
+    if($_GET['sit'] == "ativado"){
         $situacao = "desativado";
     }else{
         $situacao = "ativado";
@@ -15,5 +15,6 @@ $usuarioDTO->setSituacao($situacao);
 
 $usuarioDAO = new UsuarioDAO();
     if($usuarioDAO->editarSituacao($usuarioDTO)){
-        header("Location: ../view/listarTodosUsuarios.php");
+        $_SESSION['show'] = 'show';
+        echo "<script>history.go(-1)</script>";
     }

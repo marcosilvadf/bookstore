@@ -1,12 +1,11 @@
 <?php
 session_start();
     if(!isset($_SESSION['perfil'])){
-    echo "
-    <script>
-    history.go(-1)
-    </script>
-    ";
-    }  
+        header("Location: ../index.php");
+    }
+require_once '../dao/UsuarioDAO.php';
+$usuarioDAO = new UsuarioDAO();
+$_SESSION['perfil'] = $usuarioDAO->findByID($_SESSION['perfil']['id']);
     
 ?>
 <!DOCTYPE html>
@@ -42,8 +41,9 @@ session_start();
             <span><?=$_SESSION['perfil']['nome']?></span>
             <span><?=$_SESSION['perfil']['email']?></span>
             <span><?=date("d/m/Y", strtotime($_SESSION['perfil']['data_nascimento']))?></span>     
+            <span><?=$_SESSION['perfil']['celular']?></span>
             <a href="../view/formAlterarUsuario.php?id=<?=$_SESSION['perfil']['id']?>">Editar perfil</a>
-            <a href="../controller/sairClienteController.php" onclick="return sair(event)">Sair</a>
+            <a href="../index.php">Página Principal</a>
         </div>
     </div>
 

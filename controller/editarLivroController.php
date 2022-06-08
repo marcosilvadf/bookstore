@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../dao/LivroDAO.php';
 require_once '../dto/LivroDTO.php';
 
@@ -21,9 +21,6 @@ $livroDTO->setSinopse($sinopse);
 $livroDAO = new LivroDAO();
 
     if($livroDAO->update($livroDTO)){
-        if($_SESSION['perfil']['tipo'] == "administrador"){
-            header("Location: ../view/gerenciarLivrosADM.php");
-        }else{
-            header("Location: ../view/painelAutor.php");
+        $_SESSION['show1'] = 'show';
+        echo '<script>history.go(-2)</script>';
         }
-    }

@@ -12,4 +12,5 @@ $usuarioDTO->setCampoValor($valor);
 
 $usuarioDAO = new UsuarioDAO();$usuarios = $usuarioDAO->Pesquisarusuario($usuarioDTO, $campo);
         $_SESSION['listaADM'] = $usuarios;
-        header('Location: ../view/listarTodosUsuarios.php');
+        $_SESSION['show'] = "show";
+        echo "<script>history.go(-1)</script>";

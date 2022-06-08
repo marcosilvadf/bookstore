@@ -28,10 +28,7 @@ session_start();
         <div>
             <ul class="menu">
                 <div onclick="showMenu()"  id="btnMenu"></div>
-                <li class="shMenu"><a href=""><span></span>Menu</a></li>
-                <li class="shMenu"><a href=""><span></span>Menu</a></li>
-                <li class="shMenu"><a href=""><span></span>Menu</a></li>
-                <li class="shMenu"><a href=""><span></span>Quem somos</a></li>
+                <li class="shMenu"><a href="../index.php"><span></span>Início</a></li>
             </ul>
         </div>
         <form action="/view/listarLivros.php" method="post" id="sch">
@@ -48,7 +45,11 @@ session_start();
                     if(!empty($_SESSION['perfil'])){
                         echo "<li class='hPerfil'><a href='/view/Perfil.php'><span></span><i class='fa-solid fa-user'></i> perfil</a></li>";
                         if($_SESSION['perfil']['tipo'] == "autor"){
-                            echo "<li class='hPerfil'><a href='./view/painelAutor.php'><span></span><i class='fa-solid fa-book'></i> Painel</a></li>";
+                            echo "<li class='hPerfil'><a href='./view/formCadastrarLivro.php'><span></span><i class='fa-solid fa-book'></i> Livro</a></li>";
+                        }else{
+                            if($_SESSION['perfil']['tipo'] == "administrador"){
+                                echo "<li class='hPerfil'><a href='./view/principalADM.php'><span></span><i class='fa-solid fa-book'></i> Painel ADM</a></li>";
+                            }
                         }
                     }else{
                         echo "<li class='hPerfil'><a href='/view/formCadastrarUsuario.php'><span></span><i class='fa-solid fa-user'></i> Entrar</a></li>";
@@ -88,7 +89,7 @@ session_start();
                                         $comentarioDAO = new ComentarioDAO();
                                         $comentarios = $comentarioDAO->findById($livros['id']);
                                             foreach ($comentarios as $comentario){
-                                                echo "<p><i class='fa-solid fa-user'></i> $comentario[comentario] - $comentario[nome]</p>";
+                                                echo "<p> <i class='fa-solid fa-user'></i> $comentario[nome] - $comentario[comentario]</p>";
                                             }
                                             echo     "</span>";
                                             echo     "<span class='btnModal btn'>sair</span>";

@@ -33,7 +33,7 @@ class LivroDAO{
 
     public function findAll(){
         try {
-            $sql = "SELECT * FROM livro";
+            $sql = "SELECT * FROM livro ORDER BY situacao";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,7 +45,7 @@ class LivroDAO{
 
     public function findByGenero($generoIndice){
         try {
-            $sql = "SELECT * FROM livro WHERE GENERO_id=? ";
+            $sql = "SELECT * FROM livro WHERE GENERO_id=? AND situacao = 'ativado' ";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(1, $generoIndice);
             $stmt->execute();
@@ -70,7 +70,7 @@ class LivroDAO{
 
     public function Pesquisarlivro(LivroDTO $livroDTO){
         try {
-            $sql = "SELECT * FROM livro WHERE titulo like :valor OR subtitulo like :valor OR sinopse like :valor";
+            $sql = "SELECT * FROM livro WHERE (titulo like :valor OR subtitulo like :valor OR sinopse like :valor) AND situacao = 'ativado'";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':valor', $livroDTO->getCampoValor());
             $stmt->execute();
@@ -95,7 +95,7 @@ class LivroDAO{
 
     public function findDestaque(){
         try {
-            $sql = "SELECT l.titulo, l.capa, l.sinopse, MAX(a.livro_id) AS id, l.livropath, l.ano_publicacao, l.subtitulo FROM livro as l INNER JOIN acesso AS a ON a.livro_id = l.id;";
+            $sql = "SELECT l.titulo, l.capa, l.sinopse, MAX(a.livro_id) AS id, l.livropath, l.ano_publicacao, l.subtitulo FROM livro as l INNER JOIN acesso AS a ON a.livro_id = l.id";
             $stmt =  $this->pdo->prepare($sql);
             $stmt->execute();
             $livros = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -112,6 +112,6 @@ if(isset($_SESSION['perfil'])){
                 </div>
             </div>
         </div>
-    <!-- <script src="../js/formatarInput.js"></script> -->
+    <script src="../js/formatarInput.js"></script>
     </body>
     </html>

@@ -23,7 +23,7 @@ session_start();
     <link rel="shortcut icon" href="../image/iconeblack.png">
     <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../css/menu.css">
-    <script src="..lib/fontawesome/js/all.min.js"></script>
+    <script src="../lib/fontawesome/js/all.min.js"></script>
     <script src="../js/teste.js" defer></script>
     <style>
         body{
@@ -95,6 +95,28 @@ session_start();
         .comentario ul li{
             list-style: none;
         }
+        .btn{
+            background-color: #dbdbdb;
+            text-align: center;
+            border: 1px solid black;
+            transition: 0.1s;
+            padding: 5px;
+            letter-spacing: 1px;
+            width: 100px;
+        }
+
+        .btn:hover{
+            background-color: #c0c0c0;
+            text-align: center;
+            border: 1px solid black;
+            box-shadow: 1px 1px 3px black;
+            transition: 0.1s;
+        }
+
+        a.btn{
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -102,10 +124,7 @@ session_start();
         <div>
             <ul class="menu">
                 <div onclick="showMenu()"  id="btnMenu"></div>
-                <li class="shMenu"><a href=""><span></span>Menu</a></li>
-                <li class="shMenu"><a href=""><span></span>Menu</a></li>
-                <li class="shMenu"><a href=""><span></span>Menu</a></li>
-                <li class="shMenu"><a href=""><span></span>Quem somos</a></li>
+                <li class="shMenu"><a href="../index.php"><span></span>Início</a></li>
             </ul>
         </div>
         <form action="/view/listarLivros.php" method="post" id="sch">
@@ -122,7 +141,11 @@ session_start();
                     if(!empty($_SESSION['perfil'])){
                         echo "<li class='hPerfil'><a href='/view/Perfil.php'><span></span><i class='fa-solid fa-user'></i> perfil</a></li>";
                         if($_SESSION['perfil']['tipo'] == "autor"){
-                            echo "<li class='hPerfil'><a href='./view/painelAutor.php'><span></span><i class='fa-solid fa-book'></i> Painel</a></li>";
+                            echo "<li class='hPerfil'><a href='../view/formCadastrarLivro.php'><span></span><i class='fa-solid fa-book'></i> Livro</a></li>";
+                        }else{
+                            if($_SESSION['perfil']['tipo'] == "administrador"){
+                                echo "<li class='hPerfil'><a href='../view/principalADM.php'><span></span><i class='fa-solid fa-book'></i> Painel ADM</a></li>";
+                            }
                         }
                     }else{
                         echo "<li class='hPerfil'><a href='/view/formCadastrarUsuario.php'><span></span><i class='fa-solid fa-user'></i> Entrar</a></li>";
@@ -143,9 +166,9 @@ session_start();
 
                         <?php
                         $idLivro = $_GET['idLivro'];
-                        echo "<input type='hidden' name='idLivro' value='$idLivro'>";
+                        echo "<input type='hidden' name='idLivro' value='$idLivro''>";
                             if(!empty($_SESSION['perfil'])){
-                                echo "<input type='text' name='coment' id='' placeholder='Digite seu comentário'>";
+                                echo "<input type='text' name='coment' id='' placeholder='Digite seu comentário'  style='outline: none;'>";
                                 echo "<input type='submit' value='comentar'>";
                                 echo "</form>";
                         }
@@ -156,10 +179,10 @@ session_start();
                         $comentarios = $comentarioDAO->findById($idLivro);
                         echo "<ul>";
                             foreach ($comentarios as $comentario) {
-                                echo "<li><p><i class='fa-solid fa-user'></i> $comentario[comentario] - $comentario[nome]";
+                                echo "<li><p><i class='fa-solid fa-user'></i> $comentario[nome] - $comentario[comentario]";
                                 if(!empty($_SESSION['perfil'])){
                                     if($_SESSION['perfil']['id'] == $comentario['idUser']){
-                                        echo " - <a href='../controller/excluirComentarioController.php?id={$comentario['id']}'>deletar</a></li>";
+                                        echo " - <a href='../controller/excluirComentarioController.php?id={$comentario['id']}' class='btn'>deletar</a></li>";
                                     }
                                 }
                             }

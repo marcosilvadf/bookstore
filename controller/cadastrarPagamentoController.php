@@ -33,5 +33,5 @@ $pagamentoDTO->setPrecoId($precoId);
 
     if($pagamentoDAO->save($pagamentoDTO)){
         $uploadImg->salvar($comprovante, DIR_CAPA);
-        header("Location: ../view/painelAutor.php");
+        header("Location: ../index.php");
     }

@@ -102,32 +102,6 @@ div.perfil{
     padding: 2px 5px;
 }
 
-table{
-    border-collapse: collapse;
-}
-
-th, tr, td{
-    border: 1px solid black;
-    text-align: center;
-}
-
-td{
-    width: 150px;
-}
-
-tr:nth-child(even){
-    background-color: #9595f5;
-}
-
-tr:nth-child(odd){
-    background-color: #adadd8;
-}
-
-tr:nth-child(1){
-    background-color: #5151ff;
-    color: white;
-}
-
 div.btnPass{
     position: relative;
     width: 100%;
